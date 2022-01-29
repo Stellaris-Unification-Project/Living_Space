@@ -1,0 +1,130 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+
+######################################################################### Mining Module
+district_habitat_mining = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	icon = district_mining
+	
+	show_on_uncolonized = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_mining_drone_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_mining_drone_add = 2
+		}
+	}	
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_miner_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_mine_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_mining_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_miner_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_mine_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 250000
+		modifier = {
+			factor = 1.5
+
+			exists = owner
+			owner = {
+				has_monthly_income = {
+					resource = minerals
+					value < 30
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

@@ -1,0 +1,231 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+
+#########################################################################
+district_orbital_habitat_housing = {
+	base_buildtime = 240
+	icon = district_habitat_housing
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			#is_planet_class = pc_habitat
+			is_planet_class = pc_asteroid_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+			is_planet_class = pc_gas_giant_habitat
+		}
+	}
+
+	potential = {
+		OR = {
+			#is_planet_class = pc_habitat
+			is_planet_class = pc_asteroid_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+			is_planet_class = pc_gas_giant_habitat
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 8
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_maintenance_drone_effect_desc
+	}	
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 9000
+			free_housing < 0
+		}
+		modifier = {
+			factor = 0
+			free_housing > 1
+		}
+	}
+}
+
+#########################################################################
+district_planetary_habitat_housing = {
+	base_buildtime = 240
+	icon = district_habitat_housing
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 8
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_maintenance_drone_add = 1
+		}
+	}
+
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 9000
+			free_housing < 1
+		}
+		modifier = {
+			factor = 0
+			free_housing > 1
+		}
+	}
+}
+
+#########################################################################
+district_stellar_habitat_housing = {
+	base_buildtime = 240
+	icon = district_habitat_housing
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			is_planet_class = pc_b_star_habitat
+			is_planet_class = pc_a_star_habitat
+			is_planet_class = pc_f_star_habitat
+			is_planet_class = pc_g_star_habitat
+			is_planet_class = pc_k_star_habitat
+			is_planet_class = pc_m_star_habitat
+			is_planet_class = pc_m_giant_star_habitat
+			is_planet_class = pc_t_star_habitat
+			is_planet_class = pc_black_hole_habitat
+			is_planet_class = pc_neutron_star_habitat
+			is_planet_class = pc_pulsar_habitat
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_b_star_habitat
+			is_planet_class = pc_a_star_habitat
+			is_planet_class = pc_f_star_habitat
+			is_planet_class = pc_g_star_habitat
+			is_planet_class = pc_k_star_habitat
+			is_planet_class = pc_m_star_habitat
+			is_planet_class = pc_m_giant_star_habitat
+			is_planet_class = pc_t_star_habitat
+			is_planet_class = pc_black_hole_habitat
+			is_planet_class = pc_neutron_star_habitat
+			is_planet_class = pc_pulsar_habitat
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 8
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_maintenance_drone_add = 1
+		}
+	}
+
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 9000
+			free_housing < 1
+		}
+		modifier = {
+			factor = 0
+			free_housing > 1
+		}
+	}
+}

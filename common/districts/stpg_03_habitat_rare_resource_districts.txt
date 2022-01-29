@@ -1,0 +1,283 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+@alloy_maintenance = 1
+
+#########################################################################
+district_motes = {
+	base_buildtime = 360
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_molten_habitat
+	}
+	
+	potential = {
+		is_planet_class = pc_molten_habitat
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @alloy_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_mote_harvester_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_mote_harvesting_drone_add = 2
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		text = job_mote_harvester_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_mote_harvesting_drone_effect_desc
+	}
+	
+	prerequisites = {
+		tech_mine_volatile_motes
+		#tech_stpg_habitation
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 9000
+			owner = { 
+				has_monthly_income = {
+					resource = volatile_motes
+					value < 3
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		volatile_motes = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+#########################################################################
+district_gas = {
+	base_buildtime = 360
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_toxic_habitat
+	}
+	
+	potential = {
+		is_planet_class = pc_toxic_habitat
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @alloy_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_gas_extractor_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_gas_extraction_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		text = job_gas_extractor_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_gas_extraction_drone_effect_desc
+	}
+	
+	prerequisites = {
+		tech_mine_exotic_gases
+		#tech_stpg_habitation
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 9000
+			owner = { 
+				has_monthly_income = {
+					resource = exotic_gases
+					value < 3
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		exotic_gases = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+#########################################################################
+district_crystals = {
+	base_buildtime = 360
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			is_planet_class = pc_frozen_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_frozen_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @alloy_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_crystal_miner_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_crystal_mining_drone_add = 2
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		text = job_crystal_miner_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_crystal_mining_drone_effect_desc
+	}
+	
+	prerequisites = {
+		tech_mine_rare_crystals
+		#tech_stpg_habitation
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 9000
+			owner = { 
+				has_monthly_income = {
+					resource = rare_crystals
+					value < 3
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		rare_crystals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

@@ -1,0 +1,13 @@
+namespace = utopia
+
+# DON'T increase habitat size when changing ownership
+planet_event = {
+	id = utopia.2657
+	hide_window = yes
+}
+
+# each month, DON'T ensure habitats are the correct size
+event = {
+	id = utopia.2660
+	hide_window = yes
+}

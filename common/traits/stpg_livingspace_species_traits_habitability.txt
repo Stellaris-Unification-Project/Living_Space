@@ -1,0 +1,259 @@
+trait_pc_barren_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_barren_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_barren_cold_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_barren_cold_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_molten_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_molten_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_toxic_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_toxic_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_frozen_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_frozen_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_gas_giant_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_gas_giant_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_asteroid_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_asteroid_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_ice_asteroid_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_ice_asteroid_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_rare_crystal_asteroid_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_rare_crystal_asteroid_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_b_star_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_b_star_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_a_star_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_a_star_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_f_star_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_f_star_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_g_star_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_g_star_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_k_star_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_k_star_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_m_star_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_m_star_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_m_giant_star_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_m_giant_star_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_t_star_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_t_star_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_black_hole_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_black_hole_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_neutron_star_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_neutron_star_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_pulsar_habitat_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ring_preference.dds"
+	modification = no
+	allowed_archetypes = {}
+	sorting_priority = 30
+	modifier = {
+		pc_pulsar_habitat_habitability = 1.0
+	}
+	ai_weight = {
+		weight = 0
+	}
+}

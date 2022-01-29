@@ -1,0 +1,49 @@
+stpg_voidborne_habitats = {
+	icon = "gfx/interface/icons/planet_modifiers/stpg_voidborne_habitats.dds"
+	icon_frame = 1
+	planet_max_districts_add = 10
+}
+stpg_master_builders_habitats = {
+	icon = "gfx/interface/icons/planet_modifiers/stpg_master_builders_habitats.dds"
+	icon_frame = 1
+	planet_max_districts_add = 2
+}
+stpg_starhold_habitats = {
+	icon = "gfx/interface/icons/planet_modifiers/stpg_starhold_habitats.dds"
+	icon_frame = 1
+	planet_max_districts_add = 1
+}
+stpg_star_fortress_habitats = {
+	icon = "gfx/interface/icons/planet_modifiers/stpg_star_fortress_habitats.dds"
+	icon_frame = 1
+	planet_max_districts_add = 2
+}
+stpg_citadel_habitats = {
+	icon = "gfx/interface/icons/planet_modifiers/stpg_citadel_habitats.dds"
+	icon_frame = 1
+	planet_max_districts_add = 3
+}
+stpg_planetary_habitat = {
+	icon = "gfx/interface/icons/planet_modifiers/stpg_planetary_habitat.dds"
+	icon_frame = 1
+}
+stpg_planetary_habitat_cancelled = {
+	icon = "gfx/interface/icons/planet_modifiers/stpg_planetary_habitat.dds"
+	icon_frame = 1
+}
+stpg_orbital_habitat_amenities = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_resources.dds"
+	icon_frame = 1
+}
+stpg_star_habitat = {
+	icon = "gfx/interface/icons/planet_modifiers/stpg_planetary_habitat.dds"
+	icon_frame = 1
+	planet_technician_energy_produces_mult = 3
+	planet_max_districts_mult = -0.66
+}
+stpg_starb_habitat = {
+	icon = "gfx/interface/icons/planet_modifiers/stpg_planetary_habitat.dds"
+	icon_frame = 1
+	planet_jobs_physics_research_produces_mult = 1
+	planet_max_districts_mult = -0.66
+}

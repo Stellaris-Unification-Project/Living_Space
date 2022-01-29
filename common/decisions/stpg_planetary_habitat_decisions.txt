@@ -1,0 +1,726 @@
+@buffer = 10
+@cost_energy = 500
+@cost_alloys = 0
+
+######################################################
+# "Build Planetary Habitat"
+#
+# for uninhabitable worlds
+#
+decision_build_hostile_habitat = {
+	owned_planets_only = no
+
+	enactment_time = 0
+	resources = {
+		category = decisions
+		cost = {
+			trigger = {
+				OR = {
+					is_planet_class = pc_barren
+					is_planet_class = pc_barren_cold
+				}
+			}
+			energy = @cost_energy
+		}
+		cost = {
+			trigger = {
+				OR = {
+					is_planet_class = pc_molten
+					is_planet_class = pc_toxic
+					is_planet_class = pc_frozen
+				}
+			}
+			energy = 1500
+		}
+	}
+
+	potential = {
+		OR = {
+			from = { has_technology = tech_habitat_1 }
+			has_global_flag = LivingSpace_Tech_ignore
+		}
+		OR = {
+			is_planet_class = pc_barren
+			is_planet_class = pc_barren_cold
+			is_planet_class = pc_molten
+			is_planet_class = pc_toxic
+			is_planet_class = pc_frozen
+		}
+		# NOT = { has_modifier = terraforming_candidate }
+		NOT = { has_modifier = stpg_planetary_habitat_cancelled }
+	}
+
+	allow = {
+		OR = {
+			from = { is_ai = no} #Players can always build habitats
+			
+			# AI can only build habitats if they don't already have a planetary habitat
+			# with less than 5 pops. Also they can only build 1 of each type.
+			
+			from = {
+				NOT = { has_global_flag = LivingSpace_NoAI_active }
+				NOT = {
+					any_planet_within_border = {
+						AND = {
+							OR = {
+								is_planet_class = pc_barren_habitat
+								is_planet_class = pc_barren_cold_habitat
+								is_planet_class = pc_molten_habitat
+								is_planet_class = pc_toxic_habitat
+								is_planet_class = pc_frozen_habitat
+								is_planet_class = pc_gas_giant_habitat
+								is_planet_class = pc_asteroid_habitat
+								is_planet_class = pc_ice_asteroid_habitat
+								is_planet_class = pc_rare_crystal_asteroid_habitat
+								is_planet_class = pc_b_star_habitat
+								is_planet_class = pc_a_star_habitat
+								is_planet_class = pc_f_star_habitat
+								is_planet_class = pc_g_star_habitat
+								is_planet_class = pc_k_star_habitat
+								is_planet_class = pc_m_star_habitat
+								is_planet_class = pc_m_giant_star_habitat
+								is_planet_class = pc_t_star_habitat
+								is_planet_class = pc_black_hole_habitat
+								is_planet_class = pc_neutron_star_habitat
+								is_planet_class = pc_pulsar_habitat
+							}
+							OR = {
+								is_colony = no
+								num_pops < @buffer
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		OR = { # AI won't build more than 1 habitat of each kind
+			from = { is_ai = no }
+			AND = {
+				is_planet_class = pc_barren
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_barren_habitat } } }
+			}
+			AND = {
+				is_planet_class = pc_barren_cold
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_barren_cold_habitat } } }
+			}
+			AND = {
+				is_planet_class = pc_molten
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_molten_habitat } } }
+			}
+			AND = {
+				is_planet_class = pc_toxic
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_toxic_habitat } } }
+			}
+			AND = {
+				is_planet_class = pc_frozen
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_frozen_habitat } } }
+			}
+		}
+	}
+	
+	effect = {	
+		# Make planetary habitat
+		custom_tooltip = decision_build_hostile_habitat_effects
+		hidden_effect = {
+			set_planet_flag = eco_no_pollution
+			set_planet_flag = colony_event
+			set_planet_flag = stpg_planetary_habitat
+			clear_blockers = yes
+			
+			if = { limit = { planet_size <= 5 } set_variable = { which = stpg_size value = 5 }
+			} else_if = { limit = { planet_size = 6 } set_variable = { which = stpg_size value = 6 }
+			} else_if = { limit = { planet_size = 7 } set_variable = { which = stpg_size value = 7 }
+			} else_if = { limit = { planet_size = 8 } set_variable = { which = stpg_size value = 8 }
+			} else_if = { limit = { planet_size = 9 } set_variable = { which = stpg_size value = 9 }
+			} else_if = { limit = { planet_size = 10 } set_variable = { which = stpg_size value = 10 }
+			} else_if = { limit = { planet_size = 11 } set_variable = { which = stpg_size value = 11 }
+			} else_if = { limit = { planet_size = 12 } set_variable = { which = stpg_size value = 12 }
+			} else_if = { limit = { planet_size = 13 } set_variable = { which = stpg_size value = 13 }
+			} else_if = { limit = { planet_size = 14 } set_variable = { which = stpg_size value = 14 }
+			} else_if = { limit = { planet_size = 15 } set_variable = { which = stpg_size value = 15 }
+			} else_if = { limit = { planet_size = 16 } set_variable = { which = stpg_size value = 16 }
+			} else_if = { limit = { planet_size = 17 } set_variable = { which = stpg_size value = 17 }
+			} else_if = { limit = { planet_size = 18 } set_variable = { which = stpg_size value = 18 }
+			} else_if = { limit = { planet_size = 19 } set_variable = { which = stpg_size value = 19 }
+			} else_if = { limit = { planet_size = 20 } set_variable = { which = stpg_size value = 20 }
+			} else_if = { limit = { planet_size = 21 } set_variable = { which = stpg_size value = 21 }
+			} else_if = { limit = { planet_size = 22 } set_variable = { which = stpg_size value = 22 }
+			} else_if = { limit = { planet_size = 23 } set_variable = { which = stpg_size value = 23 }
+			} else_if = { limit = { planet_size = 24 } set_variable = { which = stpg_size value = 24 }
+			} else_if = { limit = { planet_size = 25 } set_variable = { which = stpg_size value = 25 }
+			} else_if = { limit = { planet_size = 26 } set_variable = { which = stpg_size value = 26 }
+			} else_if = { limit = { planet_size = 27 } set_variable = { which = stpg_size value = 27 }
+			} else_if = { limit = { planet_size = 28 } set_variable = { which = stpg_size value = 28 }
+			} else_if = { limit = { planet_size = 29 } set_variable = { which = stpg_size value = 29 }
+			} else_if = { limit = { planet_size >= 30 } set_variable = { which = stpg_size value = 30 }
+			}
+			
+			if = {
+				limit = { is_planet_class = pc_barren }
+				change_pc = { class = pc_barren_habitat inherit_entity = yes }
+				
+				set_variable = { which = stpg_temp value = @buffer }
+				while = { limit = { check_variable = { which = stpg_temp value < stpg_size } }
+					random_list = {
+						40 = {
+							add_deposit = d_stpg_crater
+							change_variable = { which = stpg_temp value = 1 }
+						}
+						25 = {
+							add_deposit = d_stpg_mountain_range
+							change_variable = { which = stpg_temp value = 2 }
+						}
+						10 = {
+							add_deposit = d_stpg_desolate_sands
+							change_variable = { which = stpg_temp value = 4 }
+						}
+						25 = { change_variable = { which = stpg_temp value = 1 } }
+					}
+				}
+			}
+			if = {
+				limit = { is_planet_class = pc_barren_cold }
+				change_pc = { class = pc_barren_cold_habitat inherit_entity = yes }
+				
+				set_variable = { which = stpg_temp value = @buffer }
+				while = { limit = { check_variable = { which = stpg_temp value < stpg_size } }
+					random_list = {
+						40 = {
+							add_deposit = d_stpg_crater
+							change_variable = { which = stpg_temp value = 1 }
+						}
+						25 = {
+							add_deposit = d_stpg_mountain_range
+							change_variable = { which = stpg_temp value = 2 }
+						}
+						10 = {
+							add_deposit = d_stpg_desolate_sands
+							change_variable = { which = stpg_temp value = 4 }
+						}
+						25 = { change_variable = { which = stpg_temp value = 1 } }
+					}
+				}
+			}
+			if = {
+				limit = { is_planet_class = pc_molten }
+				change_pc = { class = pc_molten_habitat inherit_entity = yes }
+				
+				set_variable = { which = stpg_temp value = @buffer }
+				while = { limit = { check_variable = { which = stpg_temp value < stpg_size } }
+					random_list = {
+						40 = {
+							add_deposit = d_stpg_lava_river
+							change_variable = { which = stpg_temp value = 1 }
+						}
+						25 = {
+							add_deposit = d_stpg_active_caldera
+							change_variable = { which = stpg_temp value = 2 }
+						}
+						10 = {
+							add_deposit = d_stpg_unstable_landmass
+							change_variable = { which = stpg_temp value = 4 }
+						}
+						25 = { change_variable = { which = stpg_temp value = 1 } }
+					}
+				}
+			}
+			if = {
+				limit = { is_planet_class = pc_toxic }
+				change_pc = { class = pc_toxic_habitat inherit_entity = yes }
+				
+				set_variable = { which = stpg_temp value = @buffer }
+				while = { limit = { check_variable = { which = stpg_temp value < stpg_size } }
+					random_list = {
+						40 = {
+							add_deposit = d_stpg_corrosive_gyser
+							change_variable = { which = stpg_temp value = 1 }
+						}
+						25 = {
+							add_deposit = d_stpg_toxic_lake
+							change_variable = { which = stpg_temp value = 2 }
+						}
+						10 = {
+							add_deposit = d_stpg_porous_wasteland
+							change_variable = { which = stpg_temp value = 4 }
+						}
+						25 = { change_variable = { which = stpg_temp value = 1 } }
+					}
+				}
+			}
+			if = {
+				limit = { is_planet_class = pc_frozen }
+				change_pc = { class = pc_frozen_habitat inherit_entity = yes }
+				
+				set_variable = { which = stpg_temp value = @buffer }
+				while = { limit = { check_variable = { which = stpg_temp value < stpg_size } }
+					random_list = {
+						40 = {
+							add_deposit = d_stpg_shifting_glacier
+							change_variable = { which = stpg_temp value = 1 }
+						}
+						25 = {
+							add_deposit = d_stpg_ice_caves
+							change_variable = { which = stpg_temp value = 2 }
+						}
+						10 = {
+							add_deposit = d_stpg_snow_dunes
+							change_variable = { which = stpg_temp value = 4 }
+						}
+						25 = { change_variable = { which = stpg_temp value = 1 } }
+					}
+				}
+			}
+			
+			# Add the planetary habitat modifier
+			#add_modifier = { modifier = stpg_planetary_habitat days = -1 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 1000000
+	}
+}
+
+decision_build_sky_city = {
+	owned_planets_only = no
+
+	enactment_time = 0
+	resources = {
+		category = decisions
+		cost = {
+			energy = @cost_energy
+		}
+	}
+
+	potential = {
+		OR = {
+			from = { has_technology = tech_habitat_1 }
+			has_global_flag = LivingSpace_Tech_ignore
+		}
+		is_planet_class = pc_gas_giant
+		NOT = { has_modifier = stpg_planetary_habitat_cancelled }
+	}
+
+	allow = {
+		OR = {
+			from = { is_ai = no} #Players can always build habitats
+			
+			# AI can only build habitats if they don't already have a planetary habitat
+			# with less than 5 pops. Also they can only build 1 of each type.
+			
+			from = {
+				NOT = { has_global_flag = LivingSpace_NoAI_active }
+				NOT = {
+					any_planet_within_border = {
+						AND = {
+							OR = {
+								is_planet_class = pc_barren_habitat
+								is_planet_class = pc_barren_cold_habitat
+								is_planet_class = pc_molten_habitat
+								is_planet_class = pc_toxic_habitat
+								is_planet_class = pc_frozen_habitat
+								is_planet_class = pc_gas_giant_habitat
+								is_planet_class = pc_asteroid_habitat
+								is_planet_class = pc_ice_asteroid_habitat
+								is_planet_class = pc_rare_crystal_asteroid_habitat
+							}
+							OR = {
+								is_colony = no
+								num_pops < @buffer
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		OR = { # AI won't build more than 1 habitat of each kind
+			from = { is_ai = no }
+			AND = {
+				is_planet_class = pc_gas_giant
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_gas_giant_habitat } } }
+			}
+		}
+	}
+	
+	effect = {	
+		# Make planetary habitat
+		custom_tooltip = decision_build_hostile_habitat_effects
+		hidden_effect = {
+			set_planet_flag = eco_no_pollution
+			set_planet_flag = colony_event
+			set_planet_flag = stpg_planetary_habitat
+			clear_blockers = yes
+			
+			if = { limit = { planet_size <= 5 } set_variable = { which = stpg_size value = 5 }
+			} else_if = { limit = { planet_size = 6 } set_variable = { which = stpg_size value = 6 }
+			} else_if = { limit = { planet_size = 7 } set_variable = { which = stpg_size value = 7 }
+			} else_if = { limit = { planet_size = 8 } set_variable = { which = stpg_size value = 8 }
+			} else_if = { limit = { planet_size = 9 } set_variable = { which = stpg_size value = 9 }
+			} else_if = { limit = { planet_size = 10 } set_variable = { which = stpg_size value = 10 }
+			} else_if = { limit = { planet_size = 11 } set_variable = { which = stpg_size value = 11 }
+			} else_if = { limit = { planet_size = 12 } set_variable = { which = stpg_size value = 12 }
+			} else_if = { limit = { planet_size = 13 } set_variable = { which = stpg_size value = 13 }
+			} else_if = { limit = { planet_size = 14 } set_variable = { which = stpg_size value = 14 }
+			} else_if = { limit = { planet_size = 15 } set_variable = { which = stpg_size value = 15 }
+			} else_if = { limit = { planet_size = 16 } set_variable = { which = stpg_size value = 16 }
+			} else_if = { limit = { planet_size = 17 } set_variable = { which = stpg_size value = 17 }
+			} else_if = { limit = { planet_size = 18 } set_variable = { which = stpg_size value = 18 }
+			} else_if = { limit = { planet_size = 19 } set_variable = { which = stpg_size value = 19 }
+			} else_if = { limit = { planet_size = 20 } set_variable = { which = stpg_size value = 20 }
+			} else_if = { limit = { planet_size = 21 } set_variable = { which = stpg_size value = 21 }
+			} else_if = { limit = { planet_size = 22 } set_variable = { which = stpg_size value = 22 }
+			} else_if = { limit = { planet_size = 23 } set_variable = { which = stpg_size value = 23 }
+			} else_if = { limit = { planet_size = 24 } set_variable = { which = stpg_size value = 24 }
+			} else_if = { limit = { planet_size = 25 } set_variable = { which = stpg_size value = 25 }
+			} else_if = { limit = { planet_size = 26 } set_variable = { which = stpg_size value = 26 }
+			} else_if = { limit = { planet_size = 27 } set_variable = { which = stpg_size value = 27 }
+			} else_if = { limit = { planet_size = 28 } set_variable = { which = stpg_size value = 28 }
+			} else_if = { limit = { planet_size = 29 } set_variable = { which = stpg_size value = 29 }
+			} else_if = { limit = { planet_size >= 30 } set_variable = { which = stpg_size value = 30 }
+			}
+
+			change_pc = { class = pc_gas_giant_habitat inherit_entity = yes }
+			
+			set_variable = { which = stpg_temp value = @buffer }
+			while = { limit = { check_variable = { which = stpg_temp value < stpg_size } }
+				random_list = {
+					40 = {
+						add_deposit = d_stpg_unstable_weather
+						change_variable = { which = stpg_temp value = 1 }
+					}
+					25 = {
+						add_deposit = d_stpg_cloud_life
+						change_variable = { which = stpg_temp value = 2 }
+					}
+					10 = {
+						add_deposit = d_stpg_permanent_storm
+						change_variable = { which = stpg_temp value = 4 }
+					}
+					25 = { change_variable = { which = stpg_temp value = 1 } }
+				}
+			}
+
+			# Add the planetary habitat modifier
+			#add_modifier = { modifier = stpg_planetary_habitat days = -1 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 1000000
+	}
+}
+
+decision_build_asteroid_habitat = {
+	owned_planets_only = no
+
+	enactment_time = 0
+	resources = {
+		category = decisions
+		cost = {
+			energy = @cost_energy
+		}
+	}
+
+	potential = {
+		OR = {
+			from = { has_technology = tech_habitat_1 }
+			has_global_flag = LivingSpace_Tech_ignore
+		}
+		OR = {
+			is_planet_class = pc_asteroid
+			is_planet_class = pc_ice_asteroid
+			is_planet_class = pc_rare_crystal_asteroid
+		}
+		NOT = { has_modifier = stpg_planetary_habitat_cancelled }
+	}
+
+	allow = {
+		OR = {
+			from = { is_ai = no} #Players can always build habitats
+			
+			# AI can only build habitats if they don't already have a planetary habitat
+			# with less than 5 pops. Also they can only build 1 of each type.
+			
+			from = {
+				NOT = { has_global_flag = LivingSpace_NoAI_active }
+				NOT = {
+					any_planet_within_border = {
+						AND = {
+							OR = {
+								is_planet_class = pc_barren_habitat
+								is_planet_class = pc_barren_cold_habitat
+								is_planet_class = pc_molten_habitat
+								is_planet_class = pc_toxic_habitat
+								is_planet_class = pc_frozen_habitat
+								is_planet_class = pc_gas_giant_habitat
+								is_planet_class = pc_asteroid_habitat
+								is_planet_class = pc_ice_asteroid_habitat
+								is_planet_class = pc_rare_crystal_asteroid_habitat
+							}
+							OR = {
+								is_colony = no
+								num_pops < @buffer
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		OR = { # AI won't build more than 1 habitat of each kind
+			from = { is_ai = no }
+			AND = {
+				is_planet_class = pc_asteroid
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_asteroid_habitat } } }
+			}
+			AND = {
+				is_planet_class = pc_ice_asteroid
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_ice_asteroid_habitat } } }
+			}
+			AND = {
+				is_planet_class = pc_rare_crystal_asteroid
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_rare_crystal_asteroid_habitat } } }
+			}
+		}
+	}
+	
+	effect = {	
+		# Make planetary habitat
+		custom_tooltip = decision_build_hostile_habitat_effects
+		hidden_effect = {
+			set_planet_flag = eco_no_pollution
+			set_planet_flag = colony_event
+			set_planet_flag = stpg_planetary_habitat
+			clear_blockers = yes
+
+			if = {
+				limit = { is_planet_class = pc_asteroid }
+				change_pc = { class = pc_asteroid_habitat inherit_entity = yes }
+			}
+			if = {
+				limit = { is_planet_class = pc_ice_asteroid }
+				change_pc = { class = pc_ice_asteroid_habitat inherit_entity = yes }
+			}
+			if = {
+				limit = { is_planet_class = pc_rare_crystal_asteroid }
+				change_pc = { class = pc_rare_crystal_asteroid_habitat inherit_entity = yes }
+			}
+			
+			random_list = {
+				8 = { set_planet_size = 4}
+				10 = { set_planet_size = 5}
+				8 = { set_planet_size = 6}
+				6 = { set_planet_size = 7}
+				4 = { set_planet_size = 8}
+			}
+			
+			# Add the planetary habitat modifier
+			#add_modifier = { modifier = stpg_planetary_habitat days = -1 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 1000000
+	}
+}
+
+decision_cancel_habitat = {
+	owned_planets_only = no
+
+	enactment_time = 0
+	resources = {
+		category = decisions
+		cost = {
+			energy = 0
+		}
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+			is_planet_class = pc_gas_giant_habitat
+			is_planet_class = pc_asteroid_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+			is_planet_class = pc_b_star_habitat
+			is_planet_class = pc_a_star_habitat
+			is_planet_class = pc_f_star_habitat
+			is_planet_class = pc_g_star_habitat
+			is_planet_class = pc_k_star_habitat
+			is_planet_class = pc_m_star_habitat
+			is_planet_class = pc_m_giant_star_habitat
+			is_planet_class = pc_t_star_habitat
+			is_planet_class = pc_black_hole_habitat
+			is_planet_class = pc_neutron_star_habitat
+			is_planet_class = pc_pulsar_habitat
+		}
+		is_colony = no
+		from = { is_ai = no }
+	}
+	
+	effect = {	
+		# revert planetary habitat
+		custom_tooltip = decision_cancel_habitat_effects
+		hidden_effect = {
+			remove_planet_flag = eco_no_pollution
+			remove_planet_flag = colony_event
+			remove_planet_flag = stpg_planetary_habitat
+
+			add_modifier = { modifier = stpg_planetary_habitat_cancelled days = -1 }
+
+			if = {
+				limit = { is_planet_class = pc_barren_habitat } change_pc = { class = pc_barren inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_barren_cold_habitat } change_pc = { class = pc_barren_cold inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_molten_habitat } change_pc = { class = pc_molten inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_toxic_habitat } change_pc = { class = pc_toxic inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_frozen_habitat } change_pc = { class = pc_frozen inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_gas_giant_habitat } change_pc = { class = pc_gas_giant inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_asteroid_habitat } change_pc = { class = pc_asteroid inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_ice_asteroid_habitat } change_pc = { class = pc_ice_asteroid inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_rare_crystal_asteroid_habitat } change_pc = { class = pc_rare_crystal_asteroid inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_b_star_habitat } change_pc = { class = pc_b_star inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_a_star_habitat } change_pc = { class = pc_a_star inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_f_star_habitat } change_pc = { class = pc_f_star inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_g_star_habitat } change_pc = { class = pc_g_star inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_k_star_habitat } change_pc = { class = pc_k_star inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_m_star_habitat } change_pc = { class = pc_m_star inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_m_giant_star_habitat } change_pc = { class = pc_m_giant_star inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_t_star_habitat } change_pc = { class = pc_t_star inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_black_hole_habitat } change_pc = { class = pc_black_hole inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_neutron_star_habitat } change_pc = { class = pc_neutron_star inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_pulsar_habitat } change_pc = { class = pc_pulsar inherit_entity = yes }
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_restore_habitat = {
+	owned_planets_only = no
+
+	enactment_time = 0
+	resources = {
+		category = decisions
+		cost = {
+			energy = 0
+		}
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_barren
+			is_planet_class = pc_barren_cold
+			is_planet_class = pc_molten
+			is_planet_class = pc_toxic
+			is_planet_class = pc_frozen
+			is_planet_class = pc_gas_giant
+			is_planet_class = pc_asteroid
+			is_planet_class = pc_ice_asteroid
+			is_planet_class = pc_rare_crystal_asteroid
+			is_planet_class = pc_b_star
+			is_planet_class = pc_a_star
+			is_planet_class = pc_f_star
+			is_planet_class = pc_g_star
+			is_planet_class = pc_k_star
+			is_planet_class = pc_m_star
+			is_planet_class = pc_m_giant_star
+			is_planet_class = pc_t_star
+			is_planet_class = pc_black_hole
+			is_planet_class = pc_neutron_star
+			is_planet_class = pc_pulsar
+		}
+		has_modifier = stpg_planetary_habitat_cancelled
+		from = { is_ai = no }
+	}
+
+	allow = {
+		from = { is_ai = no }
+	}
+	
+	effect = {	
+		# restore planetary habitat
+		custom_tooltip = decision_restore_habitat_effects
+		hidden_effect = {
+			set_planet_flag = eco_no_pollution
+			set_planet_flag = colony_event
+			set_planet_flag = stpg_planetary_habitat
+			
+			remove_modifier = stpg_planetary_habitat_cancelled
+			#add_modifier = { modifier = stpg_planetary_habitat days = -1 }
+
+			if = {
+				limit = { is_planet_class = pc_barren } change_pc = { class = pc_barren_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_barren_cold } change_pc = { class = pc_barren_cold_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_molten } change_pc = { class = pc_molten_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_toxic } change_pc = { class = pc_toxic_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_frozen } change_pc = { class = pc_frozen_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_gas_giant } change_pc = { class = pc_gas_giant_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_asteroid } change_pc = { class = pc_asteroid_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_ice_asteroid } change_pc = { class = pc_ice_asteroid_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_rare_crystal_asteroid } change_pc = { class = pc_rare_crystal_asteroid_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_b_star } change_pc = { class = pc_b_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_a_star } change_pc = { class = pc_a_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_f_star } change_pc = { class = pc_f_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_g_star } change_pc = { class = pc_g_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_k_star } change_pc = { class = pc_k_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_m_star } change_pc = { class = pc_m_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_m_giant_star } change_pc = { class = pc_m_giant_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_t_star } change_pc = { class = pc_t_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_black_hole } change_pc = { class = pc_black_hole_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_neutron_star } change_pc = { class = pc_neutron_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_pulsar } change_pc = { class = pc_pulsar_habitat inherit_entity = yes }
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}

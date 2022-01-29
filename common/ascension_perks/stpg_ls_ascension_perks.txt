@@ -1,0 +1,45 @@
+ap_voidborn = {
+	potential = {
+		host_has_dlc = "Utopia"
+		NOT = {
+			has_ascension_perk = ap_voidborn
+		}
+	}
+	
+	possible = {
+		OR = {
+			custom_tooltip = {
+				fail_text = "requires_technology_habitat_1"
+				has_technology = tech_habitat_1
+			}
+			has_global_flag = LivingSpace_Tech_ignore
+		}
+	}
+	
+	modifier = {
+		description = stpg_ap_voidborn_effects
+		
+		pc_habitat_habitability = 0.2
+		pc_gas_giant_habitat_habitability = 0.2
+		pc_asteroid_habitat_habitability = 0.2
+		pc_ice_asteroid_habitat_habitability = 0.2
+		pc_rare_crystal_asteroid_habitat_habitability = 0.2
+		pc_barren_habitat_habitability = 0.2
+		pc_barren_cold_habitat_habitability = 0.2
+		pc_molten_habitat_habitability = 0.2
+		pc_toxic_habitat_habitability = 0.2
+		pc_frozen_habitat_habitability = 0.2
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_pacifist
+		}
+	}
+}

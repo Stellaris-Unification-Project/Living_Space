@@ -1,0 +1,146 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+
+######################################################################### Trade Module
+district_habitat_commercial = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			#is_planet_class = pc_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+		}
+		from = { is_gestalt = no }
+	}
+	
+	potential = {
+		OR = {
+			#is_planet_class = pc_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+		}
+		exists = owner
+		owner = { is_gestalt = no }
+	}
+	
+	convert_to = {
+		district_habitat_energy
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+		
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		job_clerk_add = 5
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = job_clerk_effect_desc
+	}	
+	
+	show_tech_unlock_if = {
+		is_gestalt = no
+	}	
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 9000
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 6
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+######################################################################### Promenade Module
+district_habitat_promenade = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_gas_giant_habitat
+		from = { is_gestalt = no }
+	}
+	
+	potential = {
+		is_planet_class = pc_gas_giant_habitat
+		exists = owner
+		owner = { is_gestalt = no }
+	}
+	
+	convert_to = {
+		district_habitat_turbine
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+		
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		job_clerk_add = 5
+		trade_value_mult = 0.03
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = job_clerk_effect_desc
+	}	
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 9000
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 6
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

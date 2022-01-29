@@ -1,0 +1,174 @@
+@upgrade_alloys = 200
+
+decision_habitat_expansion_starhold = {
+	owned_planets_only = yes
+	
+	enactment_time = 360
+	resources = {
+		category = decisions
+		cost = {
+			alloys = 200
+		}
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_asteroid_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+		}
+		NOT = {
+			has_modifier = stpg_starhold_habitats
+			has_modifier = stpg_star_fortress_habitats
+			has_modifier = stpg_citadel_habitats
+		}
+		exists = owner
+		owner = { has_technology = tech_starbase_3 }
+	}
+
+	effect = {
+		add_modifier = { modifier = stpg_starhold_habitats days = -1 }
+	}
+
+	ai_weight = {
+		weight = 9000
+	}
+}
+
+decision_habitat_expansion_star_fortress = {
+	owned_planets_only = yes
+	
+	enactment_time = 360
+	resources = {
+		category = decisions
+		cost = {
+			alloys = 200
+		}
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_asteroid_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+		}
+		has_modifier = stpg_starhold_habitats
+		NOT = {
+			has_modifier = stpg_star_fortress_habitats
+			has_modifier = stpg_citadel_habitats
+		}
+		exists = owner
+		owner = { has_technology = tech_starbase_4 }
+	}
+
+	effect = {
+			remove_modifier = stpg_starhold_habitats
+			add_modifier = { modifier = stpg_star_fortress_habitats days = -1 }
+	}
+	ai_weight = {
+		weight = 9000
+	}
+}
+
+decision_habitat_expansion_citadel = {
+	owned_planets_only = yes
+	
+	enactment_time = 360
+	resources = {
+		category = decisions
+		cost = {
+			alloys = 200
+		}
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_asteroid_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+		}
+		has_modifier = stpg_star_fortress_habitats
+		NOT = {
+			has_modifier = stpg_starhold_habitats
+			has_modifier = stpg_citadel_habitats
+		}
+		exists = owner
+		owner = { has_technology = tech_starbase_5 }
+	}
+
+	effect = {
+			remove_modifier = stpg_star_fortress_habitats
+			add_modifier = { modifier = stpg_citadel_habitats days = -1 }
+	}
+	ai_weight = {
+		weight = 9000
+	}
+}
+
+decision_habitat_expansion_master_builders = {
+	owned_planets_only = yes
+	
+	enactment_time = 540
+	resources = {
+		category = decisions
+		cost = {
+			alloys = 300
+		}
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_asteroid_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+		}
+		NOT = { has_modifier = stpg_master_builders_habitats }
+		exists = owner
+		owner = { has_ascension_perk = ap_voidborn }
+	}
+
+	effect = {
+		add_modifier = { modifier = stpg_master_builders_habitats days = -1 }
+	}
+
+	ai_weight = {
+		weight = 9000
+	}
+}
+
+decision_habitat_expansion_voidborne = {
+	owned_planets_only = yes
+	
+	enactment_time = 720
+	resources = {
+		category = decisions
+		cost = {
+			alloys = 500
+		}
+	}
+
+	potential = {
+		has_global_flag = LivingSpace_Big_active
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_asteroid_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_rare_crystal_asteroid_habitat
+		}
+		NOT = { has_modifier = stpg_voidborne_habitats }
+		exists = owner
+		owner = { has_ascension_perk = ap_master_builders }
+	}
+
+	effect = {
+		add_modifier = { modifier = stpg_voidborne_habitats days = -1 }
+	}
+
+	ai_weight = {
+		weight = 9000
+	}
+}

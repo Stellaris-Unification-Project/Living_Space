@@ -1,0 +1,149 @@
+namespace = livingspace
+
+#Mod Flag
+event = {
+    id = livingspace.1
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { NOT = { has_global_flag = LivingSpace_active } }
+
+    immediate = {
+		set_global_flag = LivingSpace_active
+		#set_global_flag = LivingSpace_NoAI_active
+		#set_global_flag = LivingSpace_Tech_ignore
+		#set_global_flag = LivingSpace_Big_active
+		set_global_flag = LivingSpace_Stars_active
+		#set_global_flag = LivingSpace_Stars_Tech_ignore
+	}
+}
+
+#fix borked planets
+event = {
+    id = livingspace.2
+    hide_window = yes
+    is_triggered_only = no
+
+    immediate = {
+		every_planet = {
+			limit = {
+				has_modifier = stpg_planetary_habitat
+				NOR = {
+					is_planet_class = pc_barren_habitat
+					is_planet_class = pc_barren_cold_habitat
+					is_planet_class = pc_molten_habitat
+					is_planet_class = pc_toxic_habitat
+					is_planet_class = pc_frozen_habitat
+					is_planet_class = pc_asteroid_habitat
+					is_planet_class = pc_ice_asteroid_habitat
+					is_planet_class = pc_rare_crystal_asteroid_habitat
+					is_planet_class = pc_gas_giant_habitat
+					is_planet_class = pc_b_star_habitat
+					is_planet_class = pc_a_star_habitat
+					is_planet_class = pc_f_star_habitat
+					is_planet_class = pc_g_star_habitat
+					is_planet_class = pc_k_star_habitat
+					is_planet_class = pc_m_star_habitat
+					is_planet_class = pc_m_giant_star_habitat
+					is_planet_class = pc_t_star_habitat
+					is_planet_class = pc_black_hole_habitat
+					is_planet_class = pc_neutron_star_habitat
+					is_planet_class = pc_pulsar_habitat
+				}
+			}
+			remove_modifier = stpg_planetary_habitat
+			remove_planet_flag = eco_no_pollution
+		}
+	}
+}
+
+
+#Living Space Options Menu
+country_event = {
+	id = livingspace.100
+	is_triggered_only = yes
+	title = "livingspace.100.name"
+	desc = { text = "livingspace.100.desc" }
+	picture = GFX_evt_stpg_menu
+	trigger = {
+		has_global_flag = LivingSpace_active
+	}
+
+	option = {
+		name = ls_ai_yes
+		remove_global_flag = LivingSpace_NoAI_active
+		country_event = { id = livingspace.100 }
+	}
+	option = {
+		name = ls_ai_no
+		set_global_flag = LivingSpace_NoAI_active
+		country_event = { id = livingspace.100 }
+	}
+	option = {
+		name = ls_tech_yes
+		remove_global_flag = LivingSpace_Tech_ignore
+		country_event = { id = livingspace.100 }
+	}
+	option = {
+		name = ls_tech_no
+		set_global_flag = LivingSpace_Tech_ignore
+		country_event = { id = livingspace.100 }
+	}
+	option = {
+		name = ls_big_yes
+		set_global_flag = LivingSpace_Big_active
+		country_event = { id = livingspace.100 }
+	}
+	option = {
+		name = ls_big_no
+		remove_global_flag = LivingSpace_Big_active
+		country_event = { id = livingspace.100 }
+	}
+	option = {
+		name = ls_stars_menu
+		country_event = { id = livingspace.101 }
+	}
+	option = {
+		name = ls_close
+	}
+}
+
+#Living Space Stars Options Menu
+country_event = {
+	id = livingspace.101
+	is_triggered_only = yes
+	title = "livingspace.101.name"
+	desc = { text = "livingspace.101.desc" }
+	picture = GFX_evt_stpg_menu
+	trigger = {
+		has_global_flag = LivingSpace_active
+	}
+
+	option = {
+		name = ls_back
+		country_event = { id = livingspace.100 }
+	}
+	option = {
+		name = ls_stars_yes
+		set_global_flag = LivingSpace_Stars_active
+		country_event = { id = livingspace.101 }
+	}
+	option = {
+		name = ls_stars_no
+		remove_global_flag = LivingSpace_Stars_active
+		country_event = { id = livingspace.101 }
+	}
+	option = {
+		name = ls_stars_tech_yes
+		remove_global_flag = LivingSpace_Stars_Tech_ignore
+		country_event = { id = livingspace.101 }
+	}
+	option = {
+		name = ls_stars_tech_no
+		set_global_flag = LivingSpace_Stars_Tech_ignore
+		country_event = { id = livingspace.101 }
+	}
+	option = {
+		name = ls_close
+	}
+}

@@ -1,0 +1,26 @@
+habitable_structure = {
+	OR = {
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_habitat
+		is_planet_class = pc_ice_asteroid_habitat
+		is_planet_class = pc_asteroid_habitat
+		is_planet_class = pc_rare_crystal_asteroid_habitat
+		is_planet_class = pc_gas_giant_habitat
+		is_planet_class = pc_molten_habitat
+		is_planet_class = pc_barren_habitat
+		is_planet_class = pc_barren_cold_habitat
+		is_planet_class = pc_toxic_habitat
+		is_planet_class = pc_frozen_habitat
+		is_planet_class = pc_b_star_habitat
+		is_planet_class = pc_a_star_habitat
+		is_planet_class = pc_f_star_habitat
+		is_planet_class = pc_g_star_habitat
+		is_planet_class = pc_k_star_habitat
+		is_planet_class = pc_m_star_habitat
+		is_planet_class = pc_m_giant_star_habitat
+		is_planet_class = pc_t_star_habitat
+		is_planet_class = pc_black_hole_habitat
+		is_planet_class = pc_neutron_star_habitat
+		is_planet_class = pc_pulsar_habitat
+	}
+}

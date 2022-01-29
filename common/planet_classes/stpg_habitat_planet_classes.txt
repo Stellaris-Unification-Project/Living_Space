@@ -1,0 +1,284 @@
+pc_gas_giant_habitat = {
+	entity = "gas_giant"
+	entity_scale = 14
+	icon_frame = 14
+	
+	atmosphere_color 		= hsv { 0.1 0.15 1.1 }		#DONE
+	atmosphere_intensity 	= 1.1
+	atmosphere_width 		= 0.5
+	
+	min_distance_from_sun = 40
+	max_distance_from_sun = 1000
+	
+	spawn_odds = 0
+
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+
+	extra_orbit_size = 1
+	extra_planet_count = 2
+	
+	can_be_moon = no
+	chance_of_ring = 0.6
+	
+	planet_size = { min = 20 max = 30 }
+	moon_size = { min = 8 max = 15 }
+
+	colonizable = yes
+	starting_planet = no
+	uses_alternative_skies_for_moons = no
+
+	modifier = {
+		pop_environment_tolerance = 0.70
+	}
+}
+
+pc_asteroid_habitat = {
+	entity = "asteroid"
+	entity_scale = 1.5
+	icon_frame = 18
+	
+	asteroid = yes
+	spawn_odds = 0
+	
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	
+	chance_of_ring = 0
+	
+	planet_size = 5
+	
+	colonizable = yes
+	survey_time_factor = 0.5
+
+	colonizable = yes
+	starting_planet = no
+	uses_alternative_skies_for_moons = no
+
+	modifier = {
+		pop_environment_tolerance = 0.70
+	}
+}
+
+pc_ice_asteroid_habitat = {
+	entity = "asteroid_ice_large"
+	entity_scale = 1.5
+	icon_frame = 18
+	
+	asteroid = yes
+	spawn_odds = 0
+
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+	
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	
+	chance_of_ring = 0
+	
+	planet_size = 5
+	
+	colonizable = yes
+	starting_planet = no
+	uses_alternative_skies_for_moons = no
+
+	modifier = {
+		pop_environment_tolerance = 0.70
+	}
+}
+
+pc_rare_crystal_asteroid_habitat = {
+	entity = "asteroid_crystal_large"
+	picture = pc_crystal_asteroid
+	entity_scale = 1.5
+	icon_frame = 18
+	
+	asteroid = yes
+	spawn_odds = 0
+
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+	
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	
+	chance_of_ring = 0
+	
+	planet_size = 5
+	
+	colonizable = yes
+	starting_planet = no
+	uses_alternative_skies_for_moons = no
+
+	modifier = {
+		pop_environment_tolerance = 0.70
+	}
+}
+
+pc_molten_habitat = {
+	entity = "molten_planet"
+	entity_scale = @planet_standard_scale
+	icon_frame = 12
+	
+	atmosphere_color 		= hsv { 0.05 0.65 1.4 }		#DONE
+	atmosphere_intensity 	= 0.05
+	atmosphere_width 		= 1.0
+
+	min_distance_from_sun = 0
+	max_distance_from_sun = 60
+	spawn_odds = 0
+	
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+	
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	
+	chance_of_ring = 0
+	
+	planet_size = { min = 14 max = 30 }
+	moon_size = { min = 6 max = 12 }
+	
+	colonizable = yes
+	starting_planet = no
+	uses_alternative_skies_for_moons = no
+
+	modifier = {
+		pop_environment_tolerance = 0.50
+	}
+}
+
+pc_barren_habitat = {
+	entity = "barren_planet"
+	entity_scale = @planet_standard_scale
+	icon_frame = 10
+	
+	atmosphere_color 		= hsv { 0.1 0.4 0.7 }		#DONE
+	atmosphere_intensity 	= 1.0
+	atmosphere_width 		= 0.5
+
+	min_distance_from_sun = 40
+	max_distance_from_sun = 200
+	spawn_odds = 0
+	
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+	
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	
+	chance_of_ring = 0.2
+	
+	planet_size = { min = 12 max = 30 }
+	moon_size = { min = 6 max = 10 }
+	
+	colonizable = yes
+	starting_planet = no
+	uses_alternative_skies_for_moons = no
+
+	modifier = {
+		pop_environment_tolerance = 0.70
+	}
+}
+
+pc_barren_cold_habitat = {
+	entity = "cold_barren_planet"
+	entity_scale = @planet_standard_scale
+	icon_frame = 9
+	
+	atmosphere_color 		= hsv { 0.55 0.3 0.75 }		#DONE
+	atmosphere_intensity 	= 1.0
+	atmosphere_width 		= 0.5
+
+	min_distance_from_sun = 40
+	max_distance_from_sun = 200
+	spawn_odds = 0
+	
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_arctic.dds"
+	
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	
+	chance_of_ring = 0.2
+	
+	planet_size = { min = 12 max = 30 }
+	moon_size = { min = 6 max = 10 }
+	
+	colonizable = yes
+	starting_planet = no
+	uses_alternative_skies_for_moons = no
+
+	modifier = {
+		pop_environment_tolerance = 0.70
+	}
+}
+
+pc_toxic_habitat = {
+	entity = "toxic_planet"
+	entity_scale = @planet_standard_scale
+	icon_frame = 11
+
+	atmosphere_color 		= hsv { 0.19 0.45 0.9 }		#DONE
+	atmosphere_intensity 	= 0.1
+	atmosphere_width 		= 1.2
+	
+	min_distance_from_sun = 60
+	max_distance_from_sun = 110
+	spawn_odds = 0
+	
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_tropical.dds"
+	
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	
+	chance_of_ring = 0.2
+	
+	planet_size = { min = 12 max = 25 }
+	moon_size = { min = 6 max = 10 }
+	
+	colonizable = yes
+	starting_planet = no
+	uses_alternative_skies_for_moons = no
+
+	modifier = {
+		pop_environment_tolerance = 0.50
+	}
+}
+
+pc_frozen_habitat = {
+	entity = "frozen_planet"		#DONE
+	entity_scale = @planet_standard_scale
+	icon_frame = 13
+	
+	atmosphere_color 		= hsv { 0.55 0.15 0.7 }
+	atmosphere_intensity 	= 1.0
+	atmosphere_width 		= 0.5
+
+	min_distance_from_sun = 120
+	max_distance_from_sun = 1000
+	spawn_odds = 0
+	
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_arctic.dds"
+	
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	
+	chance_of_ring = 0
+	
+	planet_size = { min = 10 max = 25 }
+	moon_size = { min = 6 max = 10 }
+	
+	colonizable = yes
+	starting_planet = no
+	uses_alternative_skies_for_moons = no
+
+	modifier = {
+		pop_environment_tolerance = 0.50
+	}
+}

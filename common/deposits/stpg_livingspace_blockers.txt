@@ -1,0 +1,517 @@
+@low_energy = 1000
+@low_alloys = 150
+@med_energy = 2000
+@med_alloys = 300
+@high_energy = 3000
+@high_alloys = 500
+
+d_stpg_crater = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @low_energy
+			alloys = @low_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_crater" }
+}
+d_stpg_mountain_range = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @med_energy
+			alloys = @med_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_mountain_range" }
+}
+d_stpg_desolate_sands = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @high_energy
+			alloys = @high_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_desolate_sands" }
+}
+d_stpg_unstable_weather = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @low_energy
+			alloys = @low_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_unstable_weather" }
+}
+d_stpg_cloud_life = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @med_energy
+			alloys = @med_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_cloud_life" }
+}
+d_stpg_permanent_storm = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @high_energy
+			alloys = @high_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_permanent_storm" }
+}
+d_stpg_corrosive_gyser = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @low_energy
+			alloys = @low_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_corrosive_gyser" }
+}
+d_stpg_toxic_lake = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @med_energy
+			alloys = @med_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_toxic_lake" }
+}
+d_stpg_porous_wasteland = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @high_energy
+			alloys = @high_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_porous_wasteland" }
+}
+d_stpg_lava_river = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @low_energy
+			alloys = @low_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_lava_river" }
+}
+d_stpg_active_caldera = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @med_energy
+			alloys = @med_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_active_caldera" }
+}
+d_stpg_unstable_landmass = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @high_energy
+			alloys = @high_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_unstable_landmass" }
+}
+d_stpg_shifting_glacier = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @low_energy
+			alloys = @low_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_shifting_glacier" }
+}
+d_stpg_ice_caves = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @med_energy
+			alloys = @med_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_ice_caves" }
+}
+d_stpg_snow_dunes = {	
+	time = 270
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = @high_energy
+			alloys = @high_alloys
+		}
+	}
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}	
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+
+	prerequisites = { "tech_stpg_snow_dunes" }
+}

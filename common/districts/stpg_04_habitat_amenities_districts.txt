@@ -1,0 +1,218 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+
+#########################################################################
+district_habitat_leisure = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		from = { is_gestalt = no }
+		OR = {
+			#is_planet_class = pc_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_gas_giant_habitat
+			is_planet_class = pc_b_star_habitat
+			is_planet_class = pc_a_star_habitat
+			is_planet_class = pc_f_star_habitat
+			is_planet_class = pc_g_star_habitat
+			is_planet_class = pc_k_star_habitat
+			is_planet_class = pc_m_star_habitat
+			is_planet_class = pc_m_giant_star_habitat
+			is_planet_class = pc_t_star_habitat
+			is_planet_class = pc_black_hole_habitat
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		OR = {
+			#is_planet_class = pc_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_gas_giant_habitat
+			is_planet_class = pc_b_star_habitat
+			is_planet_class = pc_a_star_habitat
+			is_planet_class = pc_f_star_habitat
+			is_planet_class = pc_g_star_habitat
+			is_planet_class = pc_k_star_habitat
+			is_planet_class = pc_m_star_habitat
+			is_planet_class = pc_m_giant_star_habitat
+			is_planet_class = pc_t_star_habitat
+			is_planet_class = pc_black_hole_habitat
+		}
+	}
+	
+	convert_to = {
+		district_habitat_maintenance
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+		
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		job_entertainer_add = 3
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_warrior_culture
+			}					
+		}
+		modifier = {
+			job_duelist_add = 3
+			job_entertainer_add = -3
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_valid_civic = civic_warrior_culture }
+		}
+		text = job_duelist_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { NOT = { has_valid_civic = civic_warrior_culture } }
+		}
+		text = job_entertainer_effect_desc
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = 
+		{
+			factor = 9000
+			free_amenities < 1
+		}
+	}
+}
+
+#########################################################################
+district_habitat_maintenance = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		from = { is_gestalt = yes }
+		OR = {
+			#is_planet_class = pc_habitat
+			is_planet_class = pc_gas_giant_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+			is_planet_class = pc_b_star_habitat
+			is_planet_class = pc_a_star_habitat
+			is_planet_class = pc_f_star_habitat
+			is_planet_class = pc_g_star_habitat
+			is_planet_class = pc_k_star_habitat
+			is_planet_class = pc_m_star_habitat
+			is_planet_class = pc_m_giant_star_habitat
+			is_planet_class = pc_t_star_habitat
+			is_planet_class = pc_black_hole_habitat
+			AND = {
+				from = { is_machine_empire = no }
+				OR = {
+					is_planet_class = pc_asteroid_habitat
+					is_planet_class = pc_rare_crystal_asteroid_habitat
+				}
+			}
+		}
+		
+	}
+	
+	potential = {
+		exists = owner
+		owner = { is_gestalt = yes }
+		OR = {
+			#is_planet_class = pc_habitat
+			is_planet_class = pc_gas_giant_habitat
+			is_planet_class = pc_ice_asteroid_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+			is_planet_class = pc_b_star_habitat
+			is_planet_class = pc_a_star_habitat
+			is_planet_class = pc_f_star_habitat
+			is_planet_class = pc_g_star_habitat
+			is_planet_class = pc_k_star_habitat
+			is_planet_class = pc_m_star_habitat
+			is_planet_class = pc_m_giant_star_habitat
+			is_planet_class = pc_t_star_habitat
+			is_planet_class = pc_black_hole_habitat
+			AND = {
+				owner = { is_machine_empire = no }
+				OR = {
+					is_planet_class = pc_asteroid_habitat
+					is_planet_class = pc_rare_crystal_asteroid_habitat
+				}
+			}
+		}
+	}
+	
+	convert_to = {
+		district_habitat_leisure
+		district_asteroid_consumergoods
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+		
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		job_maintenance_drone_add = 5
+		pop_amenities_usage_mult = -0.03
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = job_maintenance_drone_effect_desc
+	}	
+	
+	ai_weight = {
+		weight = 1
+		modifier = 
+		{
+			factor = 9000
+			free_amenities < 1
+		}
+	}
+}

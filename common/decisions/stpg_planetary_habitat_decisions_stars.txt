@@ -1,0 +1,207 @@
+@buffer = 10
+@cost_energy = 5000
+@cost_alloys = 0
+
+######################################################
+# "Build Star Habitat"
+#
+
+decision_build_star_habitat = {
+	owned_planets_only = no
+
+	enactment_time = 0
+	resources = {
+		category = decisions
+		cost = {
+			energy = @cost_energy
+		}
+	}
+
+	potential = {
+		has_global_flag = LivingSpace_Stars_active
+		from = {
+			AND = {
+				OR = {
+					has_technology = tech_habitat_1
+					has_global_flag = LivingSpace_Tech_ignore
+				}
+				OR = {
+					has_global_flag = LivingSpace_Stars_Tech_ignore
+					AND = {
+						has_technology = tech_dark_matter_deflector
+						has_technology = tech_dark_matter_power_core
+						has_technology = tech_dark_matter_propulsion
+					}
+				}
+			}
+		}
+		OR = {
+			is_planet_class = pc_b_star
+			is_planet_class = pc_a_star
+			is_planet_class = pc_f_star
+			is_planet_class = pc_g_star
+			is_planet_class = pc_k_star
+			is_planet_class = pc_m_star
+			is_planet_class = pc_m_giant_star
+			is_planet_class = pc_t_star
+			is_planet_class = pc_black_hole
+			is_planet_class = pc_neutron_star
+			is_planet_class = pc_pulsar
+		}
+		NOT = { has_modifier = stpg_planetary_habitat_cancelled }
+	}
+
+	allow = {
+		OR = {
+			from = { is_ai = no} #Players can always build habitats
+			
+			# AI can only build 1 star, 1 black hole, and 1 neutron star habitat
+			
+			from = {
+				NOT = { has_global_flag = LivingSpace_NoAI_active }
+				NOT = {
+					any_planet_within_border = {
+						AND = {
+							OR = {
+								is_planet_class = pc_barren_habitat
+								is_planet_class = pc_barren_cold_habitat
+								is_planet_class = pc_molten_habitat
+								is_planet_class = pc_toxic_habitat
+								is_planet_class = pc_frozen_habitat
+								is_planet_class = pc_gas_giant_habitat
+								is_planet_class = pc_asteroid_habitat
+								is_planet_class = pc_ice_asteroid_habitat
+								is_planet_class = pc_rare_crystal_asteroid_habitat
+								is_planet_class = pc_b_star_habitat
+								is_planet_class = pc_a_star_habitat
+								is_planet_class = pc_f_star_habitat
+								is_planet_class = pc_g_star_habitat
+								is_planet_class = pc_k_star_habitat
+								is_planet_class = pc_m_star_habitat
+								is_planet_class = pc_m_giant_star_habitat
+								is_planet_class = pc_t_star_habitat
+								is_planet_class = pc_black_hole_habitat
+								is_planet_class = pc_neutron_star_habitat
+								is_planet_class = pc_pulsar_habitat
+							}
+							OR = {
+								is_colony = no
+								num_pops < @buffer
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		OR = { # AI won't build more than 1 habitat of each kind
+			from = { is_ai = no }
+			AND = {
+				OR = {
+					is_planet_class = pc_b_star
+					is_planet_class = pc_a_star
+					is_planet_class = pc_f_star
+					is_planet_class = pc_g_star
+					is_planet_class = pc_k_star
+					is_planet_class = pc_m_star
+					is_planet_class = pc_m_giant_star
+					is_planet_class = pc_t_star
+				}
+				NOT = { from = { any_planet_within_border = {
+					is_planet_class = pc_b_star_habitat
+					is_planet_class = pc_a_star_habitat
+					is_planet_class = pc_f_star_habitat
+					is_planet_class = pc_g_star_habitat
+					is_planet_class = pc_k_star_habitat
+					is_planet_class = pc_m_star_habitat
+					is_planet_class = pc_m_giant_star_habitat
+					is_planet_class = pc_t_star_habitat
+				} } }
+			}
+			AND = {
+				is_planet_class = pc_black_hole
+				NOT = { from = { any_planet_within_border = { is_planet_class = pc_black_hole_habitat } } }
+			}
+			AND = {
+				OR = {
+					is_planet_class = pc_neutron_star
+					is_planet_class = pc_pulsar
+				}
+				NOT = { from = { any_planet_within_border = {
+					is_planet_class = pc_neutron_star_habitat
+					is_planet_class = pc_pulsar_habitat
+				} } }
+			}
+		}
+	}	
+	effect = {	
+		# Make planetary habitat
+		custom_tooltip = decision_build_hostile_habitat_effects
+		hidden_effect = {
+			set_planet_flag = eco_no_pollution
+			set_planet_flag = colony_event
+			set_planet_flag = stpg_planetary_habitat
+			clear_blockers = yes
+			
+			if = {
+				limit = {
+					OR = {
+						is_planet_class = pc_b_star
+						is_planet_class = pc_a_star
+						is_planet_class = pc_f_star
+						is_planet_class = pc_g_star
+						is_planet_class = pc_k_star
+						is_planet_class = pc_m_star
+						is_planet_class = pc_m_giant_star
+						is_planet_class = pc_t_star
+					}
+				}
+				add_modifier = { modifier = stpg_star_habitat days = -1 }
+			}
+			if = {
+				limit = {
+					OR = {
+						is_planet_class = pc_black_hole
+						is_planet_class = pc_neutron_star
+						is_planet_class = pc_pulsar
+					}
+				}
+				add_modifier = { modifier = stpg_starb_habitat days = -1 }
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_black_hole
+				}
+				from = { set_country_flag = dark_matter_found }
+			}
+
+			if = {
+				limit = { is_planet_class = pc_b_star } change_pc = { class = pc_b_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_a_star } change_pc = { class = pc_a_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_f_star } change_pc = { class = pc_f_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_g_star } change_pc = { class = pc_g_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_k_star } change_pc = { class = pc_k_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_m_star } change_pc = { class = pc_m_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_m_giant_star } change_pc = { class = pc_m_giant_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_t_star } change_pc = { class = pc_t_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_black_hole } change_pc = { class = pc_black_hole_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_neutron_star } change_pc = { class = pc_neutron_star_habitat inherit_entity = yes }
+			} else_if = {
+				limit = { is_planet_class = pc_pulsar } change_pc = { class = pc_pulsar_habitat inherit_entity = yes }
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 1000000
+	}
+}

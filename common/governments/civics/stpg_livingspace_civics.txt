@@ -1,0 +1,23 @@
+civic_stpg_xenohabitation = {
+	description = "civic_stpg_xenohabitation_effects"
+	potential = {
+		always = yes
+	}
+	possible = {
+		always = yes
+	}
+	random_weight = { base = 5 }
+
+	modifier = {
+		pc_habitat_habitability = 0.1
+		pc_gas_giant_habitat_habitability = 0.1
+		pc_asteroid_habitat_habitability = 0.1
+		pc_ice_asteroid_habitat_habitability = 0.1
+		pc_rare_crystal_asteroid_habitat_habitability = 0.1
+		pc_barren_habitat_habitability = 0.1
+		pc_barren_cold_habitat_habitability = 0.1
+		pc_molten_habitat_habitability = 0.1
+		pc_toxic_habitat_habitability = 0.1
+		pc_frozen_habitat_habitability = 0.1
+	}
+}

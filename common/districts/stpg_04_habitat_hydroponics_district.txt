@@ -1,0 +1,213 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+
+#########################################################################
+district_habitat_hydroponics = {
+	base_buildtime = 240
+	#icon = district_farming
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+			AND = {
+				is_planet_class = pc_habitat
+				has_planet_flag = stpg_farming_habitat
+			}
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+			AND = {
+				is_planet_class = pc_habitat
+				has_planet_flag = stpg_farming_habitat
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			trigger = {
+				NOT = { is_planet_class = pc_habitat }
+			}
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		cost = {
+			trigger = {
+				is_planet_class = pc_habitat
+			}
+			minerals = 500
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_habitat
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_habitat
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_habitat
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 1
+		}
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_farmer_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_habitat
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_farmer_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_farm_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_habitat
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_farm_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_farm_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 250000
+		modifier = {
+			factor = 1.5
+
+			exists = owner
+			owner = {
+				has_monthly_income = {
+					resource = food
+					value < -1
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+
+			exists = owner
+			owner = { 
+				has_monthly_income = {
+					resource = food
+					value > 50
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

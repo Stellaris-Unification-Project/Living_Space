@@ -1,0 +1,94 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+
+######################################################################### Dark Matter Extractor
+district_habitat_dark_matter = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	icon = district_mining
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_black_hole_habitat
+	}
+	
+	potential = {
+		is_planet_class = pc_black_hole_habitat
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			alloys = 500
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_matter_extractor_drone_add = 5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+			}
+		}
+		modifier = {
+			job_matter_extractor_add = 5
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_matter_extractor_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+			}
+		}
+		text = job_matter_extractor_effect_desc
+	}
+
+	prerequisites = {
+		tech_mine_dark_matter
+	}
+
+	ai_weight = {
+		weight = 250000
+		modifier = {
+			factor = 10
+			exists = owner
+			owner = {
+				has_monthly_income = {
+					resource = sr_dark_matter
+					value < 1
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

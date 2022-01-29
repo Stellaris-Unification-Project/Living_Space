@@ -1,0 +1,39 @@
+stpg_alloys_expenditure_planets = {
+	resource = alloys 
+	type = expenditure
+	category = planets
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 1
+	}	
+}
+stpg_alloys_expenditure_decisions = {
+	resource = alloys 
+	type = expenditure
+	category = decisions
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 1
+	}	
+}
+stpg_alloys_expenditure_deposit_blockers = {
+	resource = alloys 
+	type = expenditure
+	category = deposit_blockers
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 1
+	}	
+}

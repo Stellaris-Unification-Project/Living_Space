@@ -1,0 +1,43 @@
+# Mastery of Nature
+decision_stpg_mastery_of_nature = {
+	owned_planets_only = yes
+
+	enactment_time = 360
+	resources = {
+		category = decisions
+		cost = {
+			influence = 100
+			energy = 1500
+			alloys = 250
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_frozen_habitat
+			is_planet_class = pc_toxic_habitat
+		}
+		owner = {
+			has_ascension_perk = ap_mastery_of_nature
+		}
+		NOT = { has_modifier = mastery_of_nature }
+	}
+	
+	effect = {
+		add_modifier = {
+			modifier = mastery_of_nature
+			days = -1
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 0
+			free_district_slots > 0
+		}
+	}
+}

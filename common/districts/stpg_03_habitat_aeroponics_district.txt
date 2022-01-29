@@ -1,0 +1,138 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+
+######################################################################### Aeroponics Module
+district_habitat_aeroponics = {
+	base_buildtime = 240
+	#icon = district_farming
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_ice_asteroid_habitat
+	}
+	
+	potential = {
+		is_planet_class = pc_ice_asteroid_habitat
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 3
+			planet_farmers_food_produces_mult = 0.03
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 2
+			planet_farmers_food_produces_mult = 0.03
+		}
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_farmer_add = 2
+			planet_farmers_food_produces_mult = 0.03
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_farm_add = 2
+			planet_farmers_food_produces_mult = 0.03
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_farm_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 250000
+		modifier = {
+			factor = 1.5
+
+			exists = owner
+			owner = {
+				has_monthly_income = {
+					resource = food
+					value < -1
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+
+			exists = owner
+			owner = { 
+				has_monthly_income = {
+					resource = food
+					value > 50
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

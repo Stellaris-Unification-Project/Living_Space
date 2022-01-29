@@ -1,0 +1,384 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+
+######################################################################### Crystal Gallery Module
+district_habitat_culture_crystal = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_rare_crystal_asteroid_habitat
+		from = { is_gestalt = no }
+	}
+	
+	potential = {
+		is_planet_class = pc_rare_crystal_asteroid_habitat
+		exists = owner
+		owner = { is_gestalt = no }
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+		
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_spiritualist = no
+				is_megacorp = no
+			}
+		}
+		modifier = {
+			job_culture_worker_add = 3
+			planet_jobs_unity_produces_mult = 0.03
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_spiritualist = no
+			}
+		}
+		modifier = {
+			job_manager_add = 3
+			planet_jobs_unity_produces_mult = 0.03
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_spiritualist = yes
+			}
+		}
+		modifier = {
+			job_priest_add = 3
+			planet_jobs_unity_produces_mult = 0.03
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_spiritualist = no
+				is_megacorp = no
+			}
+		}
+		text = job_culture_worker_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_spiritualist = no
+				is_megacorp = yes
+			}
+		}
+		text = job_manager_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_spiritualist = yes }
+		}
+		text = job_priest_effect_desc
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 3
+			free_amenities < 2
+		}
+
+		# No one to work it anyway
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_pop = { 
+					OR = { 
+						is_unemployed = yes 
+						has_job = servant 
+					}
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+######################################################################### Crystal Gallery Module
+district_habitat_synapse_crystal = {
+	icon = district_habitat_culture_crystal
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_rare_crystal_asteroid_habitat
+		from = { is_hive_empire = yes }
+	}
+	
+	potential = {
+		is_planet_class = pc_rare_crystal_asteroid_habitat
+		exists = owner
+		owner = { is_hive_empire = yes }
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+		
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_synapse_drone_add = 3
+			planet_jobs_unity_produces_mult = 0.03
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+		}
+		text = job_synapse_drone_effect_desc
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 3
+			free_amenities < 2
+		}
+
+		# No one to work it anyway
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_pop = { 
+					OR = { 
+						is_unemployed = yes 
+						has_job = servant 
+					}
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+######################################################################### Crystal Gallery Module
+district_habitat_network_crystal = {
+	icon = district_habitat_culture_crystal
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_rare_crystal_asteroid_habitat
+		from = {
+			is_machine_empire = yes
+			NOT = { has_valid_civic = civic_machine_servitor }
+		}
+	}
+	
+	potential = {
+		is_planet_class = pc_rare_crystal_asteroid_habitat
+		exists = owner
+		owner = {
+			is_machine_empire = yes
+			NOT = { has_valid_civic = civic_machine_servitor }
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+		
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				NOT = { has_valid_civic = civic_machine_servitor }
+			}
+		}
+		modifier = {
+			job_coordinator_add = 3
+			planet_jobs_unity_produces_mult = 0.03
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+		}
+		text = job_coordinator_effect_desc
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 3
+			free_amenities < 2
+		}
+
+		# No one to work it anyway
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_pop = { 
+					OR = { 
+						is_unemployed = yes 
+						has_job = servant 
+					}
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+######################################################################### Crystal Gallery Module
+district_habitat_biotrophy_crystal = {
+	icon = district_habitat_culture_crystal
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_rare_crystal_asteroid_habitat
+		from = {
+			is_machine_empire = yes
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+	
+	potential = {
+		is_planet_class = pc_rare_crystal_asteroid_habitat
+		exists = owner
+		owner = {
+			is_machine_empire = yes
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+		
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			planet_housing_add = 10
+			job_bio_trophy_add = 10
+			job_maintenance_drone_add = 1
+			planet_jobs_unity_produces_mult = 0.03
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 3
+			free_amenities < 2
+		}
+
+		# No one to work it anyway
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_pop = { 
+					OR = { 
+						is_unemployed = yes 
+						has_job = servant 
+					}
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

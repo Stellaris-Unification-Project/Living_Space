@@ -1,0 +1,382 @@
+@hab_minerals = 200
+@hab_alloys = 150
+@hab_maintenance = 2
+
+######################################################################### Generator Module
+district_habitat_energy = {
+	base_buildtime = 240
+	#icon = district_planetary_habitat_generator
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+			AND = {
+				OR = {
+					#is_planet_class = pc_habitat
+					is_planet_class = pc_ice_asteroid_habitat
+				}
+				from = { is_gestalt = yes }
+			}
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_barren_habitat
+			is_planet_class = pc_barren_cold_habitat
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+			AND = {
+				OR = {
+					#is_planet_class = pc_habitat
+					is_planet_class = pc_ice_asteroid_habitat
+				}
+				exists = owner
+				owner = { is_gestalt = yes }
+			}
+		}
+	}
+	
+	convert_to = {
+		district_habitat_commercial
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 2
+		}
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_technician_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_generator_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_technician_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_technician_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_generator_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 250000
+		modifier = {
+			factor = 1.5
+
+			exists = owner
+			owner = {
+				has_monthly_income = {
+					resource = energy
+					value < -1
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+######################################################################### Turbine Module
+district_habitat_turbine = {
+	base_buildtime = 240
+	#icon = district_planetary_habitat_generator
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		AND = {
+			is_planet_class = pc_gas_giant_habitat
+			from = { is_gestalt = yes }
+		}
+	}
+	
+	potential = {
+		AND = {
+			is_planet_class = pc_gas_giant_habitat
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+	}
+	
+	convert_to = {
+		district_habitat_promenade
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 3
+			planet_technician_energy_produces_mult = 0.03
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 2
+			planet_technician_energy_produces_mult = 0.03
+		}
+	}
+
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = job_technician_drone_effect_desc
+	}
+
+	ai_weight = {
+		weight = 250000
+		modifier = {
+			factor = 1.5
+
+			exists = owner
+			owner = {
+				has_monthly_income = {
+					resource = energy
+					value < -1
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+######################################################################### Generator Module
+district_habitat_starpower = {
+	base_buildtime = 240
+	#icon = district_habitat_energy
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			is_planet_class = pc_b_star_habitat
+			is_planet_class = pc_a_star_habitat
+			is_planet_class = pc_f_star_habitat
+			is_planet_class = pc_g_star_habitat
+			is_planet_class = pc_k_star_habitat
+			is_planet_class = pc_m_star_habitat
+			is_planet_class = pc_m_giant_star_habitat
+			is_planet_class = pc_t_star_habitat
+			is_planet_class = pc_neutron_star_habitat
+			is_planet_class = pc_pulsar_habitat
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_b_star_habitat
+			is_planet_class = pc_a_star_habitat
+			is_planet_class = pc_f_star_habitat
+			is_planet_class = pc_g_star_habitat
+			is_planet_class = pc_k_star_habitat
+			is_planet_class = pc_m_star_habitat
+			is_planet_class = pc_m_giant_star_habitat
+			is_planet_class = pc_t_star_habitat
+			is_planet_class = pc_neutron_star_habitat
+			is_planet_class = pc_pulsar_habitat
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_minerals
+			alloys = @hab_alloys
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 5
+		}
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_technician_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_generator_add = 5
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_technician_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_technician_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_generator_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 250000
+		modifier = {
+			factor = 1.5
+
+			exists = owner
+			owner = {
+				has_monthly_income = {
+					resource = energy
+					value < -1
+				}
+			}
+		}
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

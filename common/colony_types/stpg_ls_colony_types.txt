@@ -1,0 +1,71 @@
+# Extraction Planet
+col_stpg_extraction = {
+	icon = 2
+	
+	potential = {
+		exists = owner
+		OR = {
+			is_planet_class = pc_molten_habitat
+			is_planet_class = pc_toxic_habitat
+			is_planet_class = pc_frozen_habitat
+		}
+		is_special_colony_type = no
+	}
+	
+	planet_modifier = {
+		planet_jobs_rare_crystals_produces_mult = 0.20
+		planet_jobs_volatile_motes_produces_mult = 0.20
+		planet_jobs_exotic_gases_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 5
+			num_districts = { type = district_motes value >= 1 }
+		}
+		modifier = {
+			add = 5
+			num_districts = { type = district_gas value >= 1 }
+		}
+		modifier = {
+			add = 5
+			num_districts = { type = district_crystals value >= 1 }
+		}
+		modifier = {
+			add = 5
+			num_districts = { type = district_motes value >= 2 }
+		}
+		modifier = {
+			add = 5
+			num_districts = { type = district_gas value >= 2 }
+		}
+		modifier = {
+			add = 5
+			num_districts = { type = district_crystals value >= 2 }
+		}
+		modifier = {
+			add = 5
+			num_districts = { type = district_motes value >= 3 }
+		}
+		modifier = {
+			add = 5
+			num_districts = { type = district_gas value >= 3 }
+		}
+		modifier = {
+			add = 5
+			num_districts = { type = district_crystals value >= 3 }
+		}
+		modifier = {
+			add = 100
+			num_districts = { type = district_motes value >= 4 }
+		}
+		modifier = {
+			add = 100
+			num_districts = { type = district_gas value >= 4 }
+		}
+		modifier = {
+			add = 100
+			num_districts = { type = district_crystals value >= 4 }
+		}
+	}
+}
