@@ -25,7 +25,7 @@ event = {
     is_triggered_only = no
 
     immediate = {
-		every_planet = {
+		every_system_planet = {
 			limit = {
 				has_modifier = stpg_planetary_habitat
 				NOR = {

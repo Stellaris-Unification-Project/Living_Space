@@ -1,7 +1,6 @@
 habitable_structure = {
 	OR = {
-		is_planet_class = pc_ringworld_habitable
-		is_planet_class = pc_habitat
+		is_artificial = yes
 		is_planet_class = pc_ice_asteroid_habitat
 		is_planet_class = pc_asteroid_habitat
 		is_planet_class = pc_rare_crystal_asteroid_habitat

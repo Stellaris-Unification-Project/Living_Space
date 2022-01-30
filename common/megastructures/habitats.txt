@@ -64,7 +64,7 @@ habitat_0 = {
 			}
 			custom_tooltip = {
 				fail_text = "requires_no_anomaly"
-				NOT = { has_anomaly = yes }
+				has_anomaly = no
 			}
 			custom_tooltip = {
 				fail_text = "requires_no_existing_megastructure"
@@ -142,8 +142,8 @@ habitat_0 = {
 					entity = "orbital_habitat_entity"
 					graphical_culture = fromfrom
 				}
-				surveyed = {
-					set_surveyed = yes
+				set_surveyed = {
+					surveyed = yes
 					surveyor = FROM
 				}
 				set_all_comms_surveyed = yes
@@ -385,11 +385,11 @@ habitat_0 = {
 				}
 				if = {
 					limit = {
-						AND = {
-							NOT = { has_planet_flag = mining_habitat }
-							NOT = { has_planet_flag = energy_habitat }
-							NOT = { has_planet_flag = research_habitat }
-							NOT = { has_planet_flag = commercial_habitat }
+						NOR = {
+							has_planet_flag = mining_habitat 
+							has_planet_flag = energy_habitat 
+							has_planet_flag = research_habitat 
+							has_planet_flag = commercial_habitat 
 						}
 					}
 					set_planet_flag = stpg_farming_habitat

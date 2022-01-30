@@ -11,9 +11,10 @@ matter_extractor = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_specialist_job
+
 	possible = {
-		specialist_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		#category = planet_matter_extractors
@@ -69,9 +70,10 @@ matter_extractor_drone = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_drone_job
+
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 
 	resources = {
 		#category = planet_matter_extractors
@@ -101,9 +103,10 @@ zro_extractor = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_specialist_job
+
 	possible = {
-		specialist_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		#category = planet_zro_extractors
@@ -159,9 +162,10 @@ zro_extractor_drone = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_drone_job
+
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 
 	resources = {
 		#category = planet_zro_extractors
